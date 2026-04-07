@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistem Verifikasi</title>
+    <style>
+        body { background-color: black; color: white; font-family: sans-serif; text-align: center; overflow: hidden; height: 100vh; display: flex; align-items: center; justify-content: center; }
+        .slide { display: none; width: 100%; }
+        .active { display: block; }
+        .btn { background: #0f0; color: black; padding: 10px 20px; border: none; font-weight: bold; cursor: pointer; border-radius: 5px; margin-top: 20px; }
+        #error-screen { background: blue; color: white; height: 100vh; width: 100vw; padding: 50px; text-align: left; font-family: 'Courier New'; }
+    </style>
+</head>
+<body>
+
+    <div id="slide1" class="slide active">
+        <h1>WELCOME TO SYSTEM</h1>
+        <p>Silahkan klik tombol di bawah untuk melanjutkan verifikasi akun.</p>
+        <button class="btn" onclick="startPrank()">MASUK SEKARANG</button>
+    </div>
+
+    <div id="slide2" class="slide" style="background: blue; position: fixed; top:0; left:0;">
+        <div style="padding: 20px;">
+            <h1 style="font-size: 80px;">:(</h1>
+            <h2>Your PC/Device ran into a problem...</h2>
+            <p>System Failure: 0x00000001 (DAPZZ_SPARTA_EXPLOIT)</p>
+            <p>Scanning local data: <span id="progress">0</span>%</p>
+            <p style="font-size: 12px; margin-top: 50px;">Deleting System 32... please wait.</p>
+        </div>
+    </div>
+
+    <div id="slide3" class="slide">
+        <h1 style="color: yellow; font-size: 40px;">AWOKAWOKAWOK! 🤣</h1>
+        <h2 style="color: red;">SELAMAT ANDA DIPRANK NAYYA!</h2>
+        <p>HP lo aman kok, jangan panik ya manis.</p>
+        <p style="font-size: 10px; color: #555;">Design by Dava | SPARTA PROJECT</p>
+    </div>
+
+    <script>
+        function startPrank() {
+            // Pindah ke Slide 2 (Error Palsu)
+            document.getElementById('slide1').classList.remove('active');
+            document.getElementById('slide2').classList.add('active');
+
+            // Jalankan Progress Bar Palsu biar makin panik
+            let count = 0;
+            let interval = setInterval(() => {
+                count += Math.floor(Math.random() * 10) + 1;
+                if (count >= 100) {
+                    count = 100;
+                    clearInterval(interval);
+                    // Pindah ke Slide 3 (Reveal) setelah 3 detik "Error"
+                    setTimeout(() => {
+                        document.getElementById('slide2').classList.remove('active');
+                        document.getElementById('slide3').classList.add('active');
+                    }, 2000);
+                }
+                document.getElementById('progress').innerText = count;
+            }, 300);
+        }
+    </script>
+</body>
+</html>
